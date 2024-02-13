@@ -1,0 +1,27 @@
+{
+  "name": "ngx-localstorage-client",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^17.1.0",
+    "@angular/core": "^17.1.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "description": "This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.0.",
+  "main": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alisson-ski/ngx-localstorage-client.git"
+  },
+  "author": "Alisson Lewinski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alisson-ski/ngx-localstorage-client/issues"
+  },
+  "homepage": "https://github.com/alisson-ski/ngx-localstorage-client#readme"
+}

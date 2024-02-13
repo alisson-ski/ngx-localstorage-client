@@ -1,0 +1,1 @@
+Angular local storage client
