@@ -7,6 +7,10 @@ export class LocalStorageClient {
 
   constructor() { }
 
+  getAll(table: string) {
+    return JSON.parse(localStorage.getItem(table) || '[]');
+  }
+
   post(table: string, obj: any) {
     const dataSet: any[] = JSON.parse(localStorage.getItem(table) || '[]');
 
