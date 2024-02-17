@@ -13,17 +13,7 @@ export class LocalStorageClient {
 
   post(table: string, obj: any) {
     const dataSet: any[] = JSON.parse(localStorage.getItem(table) || '[]');
-
-    let nextId = 1;
-    if (dataSet.length) {
-      const highestIdItem = dataSet.reduce((prev, current) => {
-        return (prev.id > current.id) ? prev : current;
-      });
-
-      nextId = highestIdItem.id + 1;
-    }
-
-    obj.id = nextId;
+    obj.id = Date.now();
     dataSet.push(obj);
     localStorage.setItem(table, JSON.stringify(dataSet));
   }
