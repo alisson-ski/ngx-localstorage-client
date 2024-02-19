@@ -17,4 +17,26 @@ export class LocalStorageClient {
     dataSet.push(obj);
     localStorage.setItem(table, JSON.stringify(dataSet));
   }
+
+  getById(table: string, id: any) {
+    const dataSet: any[] = JSON.parse(localStorage.getItem(table) || '[]');
+
+    return dataSet.find(obj => obj.id === id) || null;
+  }
+
+  put(table: string, id: any, obj: any) {
+    const dataSet: any[] = JSON.parse(localStorage.getItem(table) || '[]');
+    const itemIndex = dataSet.find(obj => obj.id === id);
+
+    if (!itemIndex) {
+      throw new Error('Item not found');
+    }
+
+    dataSet[itemIndex] = {...dataSet[itemIndex], ...obj};
+    localStorage.setItem(table, JSON.stringify(dataSet));
+  }
+
+  overwrite(table: string, data: any) {
+    localStorage.setItem(table, data);
+  }
 }
