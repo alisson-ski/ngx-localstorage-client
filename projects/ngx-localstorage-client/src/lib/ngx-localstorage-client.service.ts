@@ -36,6 +36,12 @@ export class LocalStorageClient {
     localStorage.setItem(table, JSON.stringify(dataSet));
   }
 
+  delete(table: string, id: any) {
+    let dataSet: any[] = JSON.parse(localStorage.getItem(table) || '[]');
+    dataSet = dataSet.filter(obj => obj.id !== id);
+    localStorage.setItem(table, JSON.stringify(dataSet));
+  }
+
   overwrite(table: string, data: any) {
     localStorage.setItem(table, data);
   }
