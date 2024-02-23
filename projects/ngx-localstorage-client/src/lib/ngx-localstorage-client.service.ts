@@ -26,7 +26,7 @@ export class LocalStorageClient {
 
   put(table: string, id: any, obj: any) {
     const dataSet: any[] = JSON.parse(localStorage.getItem(table) || '[]');
-    const itemIndex = dataSet.find(obj => obj.id === id);
+    const itemIndex = dataSet.findIndex(obj => obj.id === id);
 
     if (!itemIndex) {
       throw new Error('Item not found');
