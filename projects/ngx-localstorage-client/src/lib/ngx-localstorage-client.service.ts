@@ -7,25 +7,33 @@ export class LocalStorageClient {
 
   constructor() { }
 
-  getAll(table: string) {
-    return JSON.parse(localStorage.getItem(table) || '[]');
+  getRaw(item: string) {
+    return localStorage.getItem(item);
   }
 
-  post(table: string, obj: any) {
-    const dataSet: any[] = JSON.parse(localStorage.getItem(table) || '[]');
+  overwrite(item: string, data: any) {
+    localStorage.setItem(item, data);
+  }
+
+  getAll(item: string) {
+    return JSON.parse(localStorage.getItem(item) || '[]');
+  }
+
+  post(item: string, obj: any) {
+    const dataSet: any[] = JSON.parse(localStorage.getItem(item) || '[]');
     obj.id = Date.now();
     dataSet.push(obj);
-    localStorage.setItem(table, JSON.stringify(dataSet));
+    localStorage.setItem(item, JSON.stringify(dataSet));
   }
 
-  getById(table: string, id: any) {
-    const dataSet: any[] = JSON.parse(localStorage.getItem(table) || '[]');
+  getById(item: string, id: any) {
+    const dataSet: any[] = JSON.parse(localStorage.getItem(item) || '[]');
 
     return dataSet.find(obj => obj.id === id) || null;
   }
 
-  put(table: string, id: any, obj: any) {
-    const dataSet: any[] = JSON.parse(localStorage.getItem(table) || '[]');
+  put(item: string, id: any, obj: any) {
+    const dataSet: any[] = JSON.parse(localStorage.getItem(item) || '[]');
     const itemIndex = dataSet.findIndex(obj => obj.id === id);
 
     if (!itemIndex) {
@@ -33,16 +41,12 @@ export class LocalStorageClient {
     }
 
     dataSet[itemIndex] = {...dataSet[itemIndex], ...obj};
-    localStorage.setItem(table, JSON.stringify(dataSet));
+    localStorage.setItem(item, JSON.stringify(dataSet));
   }
 
-  delete(table: string, id: any) {
-    let dataSet: any[] = JSON.parse(localStorage.getItem(table) || '[]');
+  delete(item: string, id: any) {
+    let dataSet: any[] = JSON.parse(localStorage.getItem(item) || '[]');
     dataSet = dataSet.filter(obj => obj.id !== id);
-    localStorage.setItem(table, JSON.stringify(dataSet));
-  }
-
-  overwrite(table: string, data: any) {
-    localStorage.setItem(table, data);
+    localStorage.setItem(item, JSON.stringify(dataSet));
   }
 }
